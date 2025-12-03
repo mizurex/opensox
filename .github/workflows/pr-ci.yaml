@@ -12,6 +12,12 @@ on:
       - "apps/docs/**" # docs only
       - "packages/**" # shared packages
       - ".github/workflows/**"
+   
+    push:
+      branches:
+        - workflow
+      paths:
+        - ".github/workflows/**"
 
 concurrency:
   group: pr-ci-${{ github.ref }}

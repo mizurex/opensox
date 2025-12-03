@@ -12,4 +12,3 @@ Raise PRs and fix the reviews
 Learn how to create pull requests and effectively address review comments from maintainers.
 
 Learn how to create pull requests and effectively address review comments from maintainers.
-

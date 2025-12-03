@@ -12,4 +12,3 @@ Get/pick your second issue assigned (medium)
 Learn how to get your second issue assigned, focusing on medium difficulty issues.
 
 Learn how to get your second issue assigned, focusing on medium difficulty issues.
-

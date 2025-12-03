@@ -14,7 +14,8 @@ export const girlscriptSummerOfCode: Program = {
   status: "active",
   isPaid: false,
   duration: "3 months",
-  stipendSummary: "Unpaid; goodies; certificates; and sometimes internship offers",
+  stipendSummary:
+    "Unpaid; goodies; certificates; and sometimes internship offers",
   timelineSummary: "Typically Mar to May each year",
   sections: [
     {

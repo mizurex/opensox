@@ -20,7 +20,7 @@ const CACHE_DURATION = process.env.NODE_ENV === "production" ? 3600000 : 60000;
 
 export async function GET(
   _request: Request,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ slug: string }> },
 ) {
   // Authenticate user
   const session = await getServerSession(authConfig);
@@ -28,7 +28,7 @@ export async function GET(
   if (!session || !session.user?.email) {
     return NextResponse.json(
       { error: "Unauthorized - Please sign in" },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
@@ -42,14 +42,14 @@ export async function GET(
     if (!subscriptionStatus.isPaidUser) {
       return NextResponse.json(
         { error: "Forbidden - Premium subscription required" },
-        { status: 403 }
+        { status: 403 },
       );
     }
   } catch (error) {
     console.error("Error checking subscription:", error);
     return NextResponse.json(
       { error: "Failed to verify subscription status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -64,7 +64,7 @@ export async function GET(
   // read from premium directory for paid users
   const newslettersDir = path.join(
     process.cwd(),
-    "src/content/newsletters-premium"
+    "src/content/newsletters-premium",
   );
   const filePath = path.join(newslettersDir, `${slug}.md`);
 
@@ -72,7 +72,7 @@ export async function GET(
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
         { error: "Newsletter not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -96,7 +96,7 @@ export async function GET(
     console.error("Error reading newsletter:", error);
     return NextResponse.json(
       { error: "Newsletter not found" },
-      { status: 404 }
+      { status: 404 },
     );
   }
 }

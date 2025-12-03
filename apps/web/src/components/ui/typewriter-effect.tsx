@@ -37,7 +37,7 @@ export const TypewriterEffect = ({
           duration: 0.3,
           delay: stagger(0.1),
           ease: "easeInOut",
-        }
+        },
       );
     }
   }, [isInView, animate]);
@@ -54,7 +54,7 @@ export const TypewriterEffect = ({
                   key={`char-${index}`}
                   className={cn(
                     `text-ox-purple opacity-0 hidden`,
-                    word.className
+                    word.className,
                   )}
                 >
                   {char}
@@ -71,7 +71,7 @@ export const TypewriterEffect = ({
     <div
       className={cn(
         "text-xs lg:text-base lg:font-medium font-medium text-ox-purple text-center",
-        className
+        className,
       )}
     >
       {renderWords()}

@@ -19,7 +19,7 @@ export const queryService = {
    * Increment the query count by 1
    */
   async incrementQueryCount(
-    prisma: ExtendedPrismaClient | PrismaClient
+    prisma: ExtendedPrismaClient | PrismaClient,
   ): Promise<void> {
     try {
       const updatedCount = await prisma.queryCount.update({

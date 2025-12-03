@@ -37,7 +37,7 @@ export default function TagFilter({
     return tags.filter(
       (tag) =>
         !selectedTags.includes(tag) &&
-        tag.toLowerCase().includes(filterInput.toLowerCase())
+        tag.toLowerCase().includes(filterInput.toLowerCase()),
     );
   }, [tags, selectedTags, filterInput]);
 

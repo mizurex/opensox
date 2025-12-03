@@ -11,7 +11,9 @@ export default function ProgramMetadata({ program }: ProgramMetadataProps) {
       <div className="bg-[#252525] p-4 md:p-5 rounded-lg border border-[#333] hover:border-[#444] transition-colors">
         <div className="flex items-center gap-2 text-gray-500 mb-2">
           <MapPin className="w-4 h-4 flex-shrink-0" />
-          <span className="text-xs font-medium uppercase tracking-wide">Region</span>
+          <span className="text-xs font-medium uppercase tracking-wide">
+            Region
+          </span>
         </div>
         <p className="text-white font-semibold text-sm md:text-base capitalize">
           {program.region}
@@ -21,7 +23,9 @@ export default function ProgramMetadata({ program }: ProgramMetadataProps) {
       <div className="bg-[#252525] p-4 md:p-5 rounded-lg border border-[#333] hover:border-[#444] transition-colors">
         <div className="flex items-center gap-2 text-gray-500 mb-2">
           <Clock className="w-4 h-4 flex-shrink-0" />
-          <span className="text-xs font-medium uppercase tracking-wide">Duration</span>
+          <span className="text-xs font-medium uppercase tracking-wide">
+            Duration
+          </span>
         </div>
         <p className="text-white font-semibold text-sm md:text-base">
           {program.duration || "Flexible"}
@@ -31,7 +35,9 @@ export default function ProgramMetadata({ program }: ProgramMetadataProps) {
       <div className="bg-[#252525] p-4 md:p-5 rounded-lg border border-[#333] hover:border-[#444] transition-colors sm:col-span-2 md:col-span-1">
         <div className="flex items-center gap-2 text-gray-500 mb-2">
           <DollarSign className="w-4 h-4 flex-shrink-0" />
-          <span className="text-xs font-medium uppercase tracking-wide">Stipend</span>
+          <span className="text-xs font-medium uppercase tracking-wide">
+            Stipend
+          </span>
         </div>
         <p className="text-white font-semibold text-sm md:text-base">
           {program.isPaid ? "Paid" : "Unpaid"}

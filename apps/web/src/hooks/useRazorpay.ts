@@ -69,7 +69,7 @@ export const useRazorpay = ({
         setIsLoading(false);
       }
     },
-    [onSuccess, onFailure, onDismiss, router]
+    [onSuccess, onFailure, onDismiss, router],
   );
 
   return {

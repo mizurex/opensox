@@ -28,7 +28,7 @@ const initializeEmailClient = () => {
 
   if (!tokenFromEnv) {
     throw new Error(
-      "ZEPTOMAIL_TOKEN is not configured in environment variables"
+      "ZEPTOMAIL_TOKEN is not configured in environment variables",
     );
   }
 
@@ -83,7 +83,7 @@ export const emailService = {
    */
   async sendPremiumSubscriptionEmail(
     email: string,
-    firstName: string
+    firstName: string,
   ): Promise<boolean> {
     const safeFirstName = escapeHtml(firstName);
     const htmlBody = `

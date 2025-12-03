@@ -15,11 +15,13 @@ export default function DashboardContainer() {
   const { loading } = useLoading();
   const { projectsNotFound } = useProjectsNotFoundStore();
   const pathname = usePathname();
-  
+
   const isProjectsPage = pathname === "/dashboard/projects";
 
   return (
-    <div className={`min-h-[calc(100vh-64px)] ${isProjectsPage ? "flex items-center justify-center" : ""}`}>
+    <div
+      className={`min-h-[calc(100vh-64px)] ${isProjectsPage ? "flex items-center justify-center" : ""}`}
+    >
       <div className={`w-full ${!loading ? "h-full" : ""}`}>
         {renderProjects && !loading && (
           <ProjectsContainer projects={data}></ProjectsContainer>

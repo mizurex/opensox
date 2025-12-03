@@ -17,7 +17,7 @@ export function ProgressBar({ completed, total, className }: ProgressBarProps) {
     <div
       className={cn(
         "flex items-center justify-between bg-dash-surface rounded-lg px-4 py-3 border border-dash-border",
-        className
+        className,
       )}
     >
       {/* Left side - Text and numbers */}

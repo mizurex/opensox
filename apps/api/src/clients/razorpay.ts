@@ -5,13 +5,13 @@ const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET;
 
 if (!RAZORPAY_KEY_ID) {
   throw new Error(
-    "RAZORPAY_KEY_ID is required but not set in environment variables. Please configure it in your .env file."
+    "RAZORPAY_KEY_ID is required but not set in environment variables. Please configure it in your .env file.",
   );
 }
 
 if (!RAZORPAY_KEY_SECRET) {
   throw new Error(
-    "RAZORPAY_KEY_SECRET is required but not set in environment variables. Please configure it in your .env file."
+    "RAZORPAY_KEY_SECRET is required but not set in environment variables. Please configure it in your .env file.",
   );
 }
 

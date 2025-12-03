@@ -154,7 +154,7 @@ export const authService = {
   async getOAuthAccount(
     prisma: any,
     provider: string,
-    providerAccountId: string
+    providerAccountId: string,
   ) {
     const account = await prisma.account.findUnique({
       where: {
@@ -185,7 +185,7 @@ export const authService = {
   async deleteOAuthAccount(
     prisma: any,
     provider: string,
-    providerAccountId: string
+    providerAccountId: string,
   ) {
     await prisma.account.delete({
       where: {

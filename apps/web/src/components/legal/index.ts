@@ -5,4 +5,3 @@ export { LegalCard } from "./LegalCard";
 export { ContactInfo } from "./ContactInfo";
 export { LegalFooter } from "./LegalFooter";
 export { LegalContent } from "./LegalContent";
-

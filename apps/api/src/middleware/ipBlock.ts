@@ -55,14 +55,14 @@ class IPBlocker {
   public getBlockedIPs(): BlockedIP[] {
     const now = Date.now();
     return Array.from(this.blockedIPs.values()).filter(
-      (blockedIP) => now <= blockedIP.blockedUntil
+      (blockedIP) => now <= blockedIP.blockedUntil,
     );
   }
 
   public middleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): void => {
     const ip = req.ip || req.socket.remoteAddress || "unknown";
 

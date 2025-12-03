@@ -22,15 +22,20 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
   };
 
   const cols = Array.from({ length: columns }, (_, colIdx) =>
-    tweets.filter((_, tweetIdx) => tweetIdx % columns === colIdx)
+    tweets.filter((_, tweetIdx) => tweetIdx % columns === colIdx),
   );
 
   const colsMd = Array.from({ length: 2 }, (_, colIdx) =>
-    tweets.filter((_, tweetIdx) => tweetIdx % columns === colIdx)
+    tweets.filter((_, tweetIdx) => tweetIdx % columns === colIdx),
   );
 
   return (
-    <div className={cn("flex w-full h-full relative overflow-hidden px-4 max-w-[1240px] mx-auto", className)}>
+    <div
+      className={cn(
+        "flex w-full h-full relative overflow-hidden px-4 max-w-[1240px] mx-auto",
+        className,
+      )}
+    >
       <div className="absolute -top-16 w-full h-1/3 z-20 bg-gradient-to-b from-[#101010] via-[#101010]/90 to-transparent"></div>
       <div className="absolute -bottom-8 w-full h-1/3 z-20 bg-gradient-to-t from-[#101010] via-[#101010]/90 to-transparent"></div>
       <div className="w-full hidden lg:flex">

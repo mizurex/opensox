@@ -167,7 +167,7 @@ const Pricing = () => {
                                 <p key={sentenceIndex} className="mb-2">
                                   {sentence}
                                 </p>
-                              )
+                              ),
                             )}
                           </div>
                         ) : (

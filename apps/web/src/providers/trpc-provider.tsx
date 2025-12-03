@@ -18,7 +18,7 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
             staleTime: 60 * 1000, // 1 minute
           },
         },
-      })
+      }),
   );
 
   // Recreate client when session changes to ensure we get the latest token

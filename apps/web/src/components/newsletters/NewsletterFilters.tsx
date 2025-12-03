@@ -1,6 +1,19 @@
 import { Search } from "lucide-react";
 
-export type TimeFilter = "all" | "january" | "february" | "march" | "april" | "may" | "june" | "july" | "august" | "september" | "october" | "november" | "december";
+export type TimeFilter =
+  | "all"
+  | "january"
+  | "february"
+  | "march"
+  | "april"
+  | "may"
+  | "june"
+  | "july"
+  | "august"
+  | "september"
+  | "october"
+  | "november"
+  | "december";
 export type SortFilter = "newest" | "oldest";
 
 interface NewsletterFiltersProps {

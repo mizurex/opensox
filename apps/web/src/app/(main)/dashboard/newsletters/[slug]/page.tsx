@@ -4,7 +4,11 @@ import "@/styles/newsletter.css";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { CalendarIcon, ClockIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import {
+  CalendarIcon,
+  ClockIcon,
+  ArrowLeftIcon,
+} from "@heroicons/react/24/outline";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSubscription } from "@/hooks/useSubscription";
 import { PremiumUpgradePrompt } from "@/components/newsletters/PremiumUpgradePrompt";
@@ -87,7 +91,9 @@ export default function NewsletterPage() {
   const slug = params.slug as string;
   const [newsletter, setNewsletter] = useState<NewsletterData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<'unauthorized' | 'forbidden' | 'not-found' | null>(null);
+  const [error, setError] = useState<
+    "unauthorized" | "forbidden" | "not-found" | null
+  >(null);
   const { isPaidUser, isLoading: subscriptionLoading } = useSubscription();
 
   useEffect(() => {
@@ -96,17 +102,17 @@ export default function NewsletterPage() {
     fetch(`/api/newsletters/${slug}`)
       .then(async (res) => {
         if (res.status === 401) {
-          setError('unauthorized');
+          setError("unauthorized");
           setLoading(false);
           return null;
         }
         if (res.status === 403) {
-          setError('forbidden');
+          setError("forbidden");
           setLoading(false);
           return null;
         }
         if (!res.ok) {
-          setError('not-found');
+          setError("not-found");
           setLoading(false);
           return null;
         }
@@ -120,7 +126,7 @@ export default function NewsletterPage() {
         setLoading(false);
       })
       .catch(() => {
-        setError('not-found');
+        setError("not-found");
         setLoading(false);
       });
   }, [slug, subscriptionLoading]);
@@ -136,12 +142,12 @@ export default function NewsletterPage() {
     );
   }
 
-  if (!isPaidUser || error === 'forbidden') {
+  if (!isPaidUser || error === "forbidden") {
     return <PremiumUpgradePrompt />;
   }
 
-  if (error === 'unauthorized') {
-    router.push('/login');
+  if (error === "unauthorized") {
+    router.push("/login");
     return null;
   }
 
@@ -160,8 +166,12 @@ export default function NewsletterPage() {
     return (
       <div className="w-full h-full flex items-center justify-center px-4">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-white mb-2">Newsletter not found</h2>
-          <p className="text-zinc-400 text-sm mb-4">The newsletter you&apos;re looking for doesn&apos;t exist.</p>
+          <h2 className="text-xl font-semibold text-white mb-2">
+            Newsletter not found
+          </h2>
+          <p className="text-zinc-400 text-sm mb-4">
+            The newsletter you&apos;re looking for doesn&apos;t exist.
+          </p>
           <button
             onClick={() => router.push("/dashboard/newsletters")}
             className="inline-flex items-center gap-2 px-4 py-2 bg-ox-purple hover:bg-purple-600 text-white text-sm rounded-lg transition-colors"
@@ -192,7 +202,7 @@ export default function NewsletterPage() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
               {newsletter.title}
             </h1>
-            
+
             {/* Metadata */}
             <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-400">
               <span className="flex items-center gap-1.5">

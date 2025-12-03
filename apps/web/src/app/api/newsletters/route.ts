@@ -22,7 +22,7 @@ export async function GET() {
   if (!session || !session.user?.email) {
     return NextResponse.json(
       { error: "Unauthorized - Please sign in" },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
@@ -36,14 +36,14 @@ export async function GET() {
     if (!subscriptionStatus.isPaidUser) {
       return NextResponse.json(
         { error: "Forbidden - Premium subscription required" },
-        { status: 403 }
+        { status: 403 },
       );
     }
   } catch (error) {
     console.error("Error checking subscription:", error);
     return NextResponse.json(
       { error: "Failed to verify subscription status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -57,7 +57,7 @@ export async function GET() {
   // read from premium directory for paid users
   const newslettersDir = path.join(
     process.cwd(),
-    "src/content/newsletters-premium"
+    "src/content/newsletters-premium",
   );
 
   try {
@@ -95,7 +95,7 @@ export async function GET() {
     console.error("Error reading newsletters:", error);
     return NextResponse.json(
       { error: "Failed to read newsletters" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

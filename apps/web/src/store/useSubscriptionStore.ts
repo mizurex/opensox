@@ -14,7 +14,7 @@ interface SubscriptionState {
   isLoading: boolean;
   setSubscriptionStatus: (
     isPaidUser: boolean,
-    subscription: Subscription | null
+    subscription: Subscription | null,
   ) => void;
   setLoading: (isLoading: boolean) => void;
   reset: () => void;

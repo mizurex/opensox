@@ -110,7 +110,7 @@ export const paymentService = {
   verifyPaymentSignature(
     orderId: string,
     paymentId: string,
-    signature: string
+    signature: string,
   ): boolean {
     try {
       const keySecret = process.env.RAZORPAY_KEY_SECRET;
@@ -142,7 +142,7 @@ export const paymentService = {
    */
   async createPaymentRecord(
     userId: string,
-    paymentData: PaymentData
+    paymentData: PaymentData,
   ): Promise<any> {
     try {
       // Check if payment already exists (idempotency)
@@ -179,7 +179,7 @@ export const paymentService = {
   async createSubscription(
     userId: string,
     planId: string,
-    paymentId: string
+    paymentId: string,
   ): Promise<any> {
     try {
       // Get plan details

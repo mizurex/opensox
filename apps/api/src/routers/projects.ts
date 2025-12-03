@@ -42,7 +42,7 @@ export const projectRouter = router({
       await queryService.incrementQueryCount(ctx.db.prisma);
       return await projectService.fetchGithubProjects(
         input.filters as any,
-        input.options as any
+        input.options as any,
       );
     }),
 });

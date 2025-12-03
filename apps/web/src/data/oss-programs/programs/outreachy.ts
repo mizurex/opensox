@@ -13,7 +13,8 @@ export const outreachy: Program = {
   status: "active",
   isPaid: true,
   duration: "3 months",
-  stipendSummary: "7000 USD internship stipend plus travel support for some interns",
+  stipendSummary:
+    "7000 USD internship stipend plus travel support for some interns",
   timelineSummary: "Two rounds each year; May to Aug and Dec to Mar",
   sections: [
     {

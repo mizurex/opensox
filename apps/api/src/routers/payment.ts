@@ -69,7 +69,7 @@ export const paymentRouter = router({
               if (input.notes[key]) {
                 const value = String(input.notes[key]).slice(
                   0,
-                  MAX_NOTE_VALUE_LENGTH
+                  MAX_NOTE_VALUE_LENGTH,
                 );
                 sanitizedNotes[key] = value;
               }
@@ -110,7 +110,7 @@ export const paymentRouter = router({
             message: "Failed to create payment order",
           });
         }
-      }
+      },
     ),
 
   verifyPayment: protectedProcedure
@@ -155,7 +155,7 @@ export const paymentRouter = router({
           const isValidSignature = paymentService.verifyPaymentSignature(
             input.razorpay_order_id,
             input.razorpay_payment_id,
-            input.razorpay_signature
+            input.razorpay_signature,
           );
           if (!isValidSignature) {
             throw new TRPCError({
@@ -176,7 +176,7 @@ export const paymentRouter = router({
           const subscription = await paymentService.createSubscription(
             userId,
             input.planId,
-            payment.id
+            payment.id,
           );
 
           // Step 4: Fetch user details and send premium subscription email
@@ -190,12 +190,12 @@ export const paymentRouter = router({
               // Send premium subscription confirmation email
               await emailService.sendPremiumSubscriptionEmail(
                 user.email,
-                user.firstName
+                user.firstName,
               );
             } else {
               // Log warning but don't fail the payment verification
               console.warn(
-                `Unable to send premium subscription email: User ${userId} not found or missing email/firstName`
+                `Unable to send premium subscription email: User ${userId} not found or missing email/firstName`,
               );
             }
           } catch (emailError) {
@@ -203,7 +203,7 @@ export const paymentRouter = router({
             // Payment and subscription are already successful
             console.error(
               "Error sending premium subscription email:",
-              emailError
+              emailError,
             );
           }
 
@@ -238,6 +238,6 @@ export const paymentRouter = router({
             message: "Failed to verify payment",
           });
         }
-      }
+      },
     ),
 });

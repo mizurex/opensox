@@ -16,12 +16,9 @@ export function LegalPageHeader({
       <h1 className="text-4xl lg:text-6xl font-bold mb-4">{title}</h1>
       {(effectiveDate || subtitle) && (
         <p className="text-text-primary text-lg mb-12">
-          {effectiveDate
-            ? `Effective date: ${effectiveDate}`
-            : subtitle}
+          {effectiveDate ? `Effective date: ${effectiveDate}` : subtitle}
         </p>
       )}
     </>
   );
 }
-

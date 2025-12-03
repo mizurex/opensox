@@ -19,7 +19,7 @@ function getEncryptionKey(): Buffer {
 
   if (!key) {
     throw new Error(
-      "ENCRYPTION_KEY environment variable is not set. This is required for token encryption."
+      "ENCRYPTION_KEY environment variable is not set. This is required for token encryption.",
     );
   }
 
@@ -63,7 +63,7 @@ export function encrypt(text: string | null | undefined): string | null {
  * @returns Decrypted plain text
  */
 export function decrypt(
-  encryptedText: string | null | undefined
+  encryptedText: string | null | undefined,
 ): string | null {
   if (!encryptedText) return null;
 

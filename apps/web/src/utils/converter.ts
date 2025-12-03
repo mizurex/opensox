@@ -107,7 +107,7 @@ const userInputValues: UserFilterObjProps = {
 // };
 
 export const convertUserInputToApiInput = (
-  filter: UserInputFilterProps
+  filter: UserInputFilterProps,
 ): FilterProps => {
   const data: Partial<FilterProps> = {};
 
@@ -139,7 +139,7 @@ export const convertUserInputToApiInput = (
 
 export const convertApiOutputToUserOutput = (
   response: RepositoryProps[],
-  filters: UserInputFilterProps
+  filters: UserInputFilterProps,
 ): DashboardProjectsProps[] => {
   const data = response.map((item) => ({
     id: item.id,

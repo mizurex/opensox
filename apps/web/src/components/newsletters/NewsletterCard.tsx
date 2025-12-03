@@ -26,8 +26,18 @@ export function NewsletterCard({ newsletter }: { newsletter: Newsletter }) {
           <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 text-xs sm:text-sm text-zinc-500 sm:min-w-[120px] w-full sm:w-auto justify-between sm:justify-start">
             <span>{newsletter.date}</span>
             <span className="flex items-center gap-1">
-              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               {newsletter.readTime}
             </span>

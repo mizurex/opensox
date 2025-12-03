@@ -14,7 +14,8 @@ export const linuxFoundationMentorship: Program = {
   status: "active",
   isPaid: true,
   duration: "12 weeks",
-  stipendSummary: "Stipend tiers based on region; usually in the low thousands of USD",
+  stipendSummary:
+    "Stipend tiers based on region; usually in the low thousands of USD",
   timelineSummary:
     "Several cohorts each year; typical terms are Mar to May; Jun to Aug; Sep to Nov",
   sections: [

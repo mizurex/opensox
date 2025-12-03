@@ -14,7 +14,8 @@ export const redoxSummerOfCode: Program = {
   status: "active",
   isPaid: true,
   duration: "Varies by project; often similar to a summer term",
-  stipendSummary: "Amount varies; paid from donations and negotiated per project",
+  stipendSummary:
+    "Amount varies; paid from donations and negotiated per project",
   timelineSummary:
     "Runs during northern hemisphere summer; exact dates and schedule agreed individually with mentors",
   sections: [

@@ -18,7 +18,7 @@ export const useGetProjects = () => {
       });
       return data;
     },
-    [utils]
+    [utils],
   );
   return func;
 };

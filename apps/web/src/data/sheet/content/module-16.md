@@ -12,4 +12,3 @@ How to plan/discuss with maintainers?
 Best practices for communicating and planning with project maintainers before starting work on issues.
 
 Best practices for communicating and planning with project maintainers before starting work on issues.
-

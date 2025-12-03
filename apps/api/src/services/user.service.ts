@@ -19,7 +19,7 @@ export const userService = {
    */
   async checkSubscriptionStatus(
     prisma: ExtendedPrismaClient | PrismaClient,
-    userId: string
+    userId: string,
   ) {
     const subscription = await prisma.subscription.findFirst({
       where: {
@@ -53,7 +53,7 @@ export const userService = {
    */
   async getCompletedSteps(
     prisma: ExtendedPrismaClient | PrismaClient,
-    userId: string
+    userId: string,
   ) {
     const user = await prisma.user.findUnique({
       where: { id: userId },
@@ -74,7 +74,7 @@ export const userService = {
   async updateCompletedSteps(
     prisma: ExtendedPrismaClient | PrismaClient,
     userId: string,
-    completedSteps: string[]
+    completedSteps: string[],
   ) {
     const user = await prisma.user.update({
       where: { id: userId },

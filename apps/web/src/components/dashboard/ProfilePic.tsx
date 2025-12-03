@@ -45,10 +45,10 @@ export const ProfilePic = ({ imageUrl }: ProfilePicProps) => {
           onError={handleError}
         />
       ) : (
-      <Image
-        alt="User Profile"
+        <Image
+          alt="User Profile"
           src={imgSrc}
-        className="w-full h-full object-cover"
+          className="w-full h-full object-cover"
           width={32}
           height={32}
           onError={handleError}

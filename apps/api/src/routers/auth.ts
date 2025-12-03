@@ -29,7 +29,7 @@ export const authRouter = router({
         };
         const authResult = await authService.handleGoogleAuth(
           ctx.db.prisma,
-          authInput
+          authInput,
         );
 
         // Store OAuth tokens (encrypted automatically) if present
@@ -51,7 +51,7 @@ export const authRouter = router({
 
           await authService.createOrUpdateOAuthAccount(
             ctx.db.prisma,
-            oauthInput
+            oauthInput,
           );
         }
 
@@ -69,7 +69,7 @@ export const authRouter = router({
   getSession: protectedProcedure.query(
     async ({ ctx }: { ctx: { user: any } }) => {
       return authService.getSession(ctx.user);
-    }
+    },
   ),
   generateJWT: publicProcedure
     .input(z.object({ email: z.string() }))

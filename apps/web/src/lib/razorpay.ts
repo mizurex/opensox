@@ -62,7 +62,7 @@ export const loadRazorpayScript = (): Promise<boolean> => {
  * Open Razorpay checkout
  */
 export const openRazorpayCheckout = async (
-  options: RazorpayOptions
+  options: RazorpayOptions,
 ): Promise<void> => {
   const isLoaded = await loadRazorpayScript();
 

@@ -14,7 +14,8 @@ export const summerOfBitcoin: Program = {
   isPaid: true,
   duration: "12 weeks",
   stipendSummary: "Stipend paid in bitcoin; roughly similar to GSoC levels",
-  timelineSummary: "Student applications around Jan to Feb; program runs May to Aug",
+  timelineSummary:
+    "Student applications around Jan to Feb; program runs May to Aug",
   sections: [
     {
       id: "what",

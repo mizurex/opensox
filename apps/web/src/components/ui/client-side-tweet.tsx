@@ -3,21 +3,18 @@
 import { TweetProps, useTweet } from "react-tweet";
 import { MagicTweet } from "./Client-tweet";
 
-
-
 export const ClientTweetCard = ({
-    id,
-    apiUrl,
-    components,
-    fetchOptions,
-    ...props
+  id,
+  apiUrl,
+  components,
+  fetchOptions,
+  ...props
 }: TweetProps & { className?: string }) => {
-    const { data, error, } = useTweet(id, apiUrl, fetchOptions);
+  const { data, error } = useTweet(id, apiUrl, fetchOptions);
 
-    if (error || !data) {
+  if (error || !data) {
+    return <></>;
+  }
 
-        return <></>
-    }
-
-    return <MagicTweet tweet={data} components={components} {...props} />;
+  return <MagicTweet tweet={data} components={components} {...props} />;
 };

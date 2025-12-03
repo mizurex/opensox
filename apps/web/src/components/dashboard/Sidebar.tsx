@@ -19,7 +19,7 @@ import {
   Squares2X2Icon,
   ChevronDownIcon,
   LockClosedIcon,
-  AcademicCapIcon
+  AcademicCapIcon,
 } from "@heroicons/react/24/outline";
 import { useShowSidebar } from "@/store/useShowSidebar";
 import { signOut, useSession } from "next-auth/react";
@@ -219,10 +219,10 @@ export default function Sidebar({ overlay = false }: { overlay?: boolean }) {
               const isPremiumRouteActive = PREMIUM_ROUTES.some(
                 (route) =>
                   pathname === route.path ||
-                  pathname.startsWith(`${route.path}/`)
+                  pathname.startsWith(`${route.path}/`),
               );
               const newFeaturesCount = PREMIUM_ROUTES.filter(
-                (route) => route.badge
+                (route) => route.badge,
               ).length;
               return (
                 <div

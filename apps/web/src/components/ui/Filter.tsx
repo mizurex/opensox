@@ -24,7 +24,7 @@ export default function Filter({
 
   const triggerClasses = clsx("text-sm font-medium", {
     "text-slate-300": ["Hire contributors", "Funding", "Trending"].includes(
-      filterName
+      filterName,
     ),
   });
 

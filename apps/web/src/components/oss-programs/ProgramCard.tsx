@@ -27,7 +27,9 @@ export default function ProgramCard({ program }: ProgramCardProps) {
             <p className="text-xs text-text-muted uppercase tracking-wide">
               Region
             </p>
-            <p className="text-sm text-text-secondary capitalize">{program.region}</p>
+            <p className="text-sm text-text-secondary capitalize">
+              {program.region}
+            </p>
           </div>
         </div>
 

@@ -18,7 +18,7 @@ export default function ProgramsList({ programs, tags }: ProgramsListProps) {
       const matchesSearch =
         program.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         program.tags.some((tag) =>
-          tag.toLowerCase().includes(searchQuery.toLowerCase())
+          tag.toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
       const matchesTags =

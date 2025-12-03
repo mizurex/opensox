@@ -12,4 +12,3 @@ Live fix/implement the issue - 5
 Fifth live session on fixing and implementing a medium difficulty issue.
 
 Fifth live session on fixing and implementing a medium difficulty issue.
-

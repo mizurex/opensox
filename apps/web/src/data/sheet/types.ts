@@ -5,4 +5,3 @@ export interface SheetModule {
   videoUrl: string; // YouTube URL
   comingSoon?: boolean; // If true, module is not yet available
 }
-

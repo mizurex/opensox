@@ -14,7 +14,7 @@ export function ActiveTag({ className, text = "active" }: ActiveTagProps) {
         "bg-success-bg text-success-text",
         "text-xs font-sm",
         "border border-success-border",
-        className
+        className,
       )}
     >
       {text}

@@ -12,7 +12,6 @@
     <a href="https://discord.gg/zbHzgMNBrm"><strong>Discord</strong></a>
 </p>
 
-
 <br/>
 
 ## Introduction
@@ -29,7 +28,6 @@ Opensox AI is a platform designed to help developers quickly discover open-sourc
 - [Turborepo](https://turbo.build/repo) – monorepo
 - [Vercel](https://vercel.com/) – deployments
 - [Railway](https://railway.com/) – deployments
-
 
 ## Contributing
 
@@ -83,6 +81,7 @@ GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 Notes:
+
 - DATABASE_URL: point this to your PostgreSQL instance. Example for local Postgres is shown above.
 - JWT_SECRET: generate one, e.g. `openssl rand -base64 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
 - CORS_ORIGINS: comma-separated list of allowed origins. Keep `http://localhost:3000` for local web app.
@@ -108,12 +107,12 @@ NEXTAUTH_URL="http://localhost:3000"
 ```
 
 Notes:
+
 - NEXT_PUBLIC_API_URL must point to the backend base URL; the frontend calls `${NEXT_PUBLIC_API_URL}/api/...` for auth and data.
 - Google OAuth: create credentials in Google Cloud Console (OAuth 2.0 Client ID), add Authorized redirect URIs for NextAuth (e.g., `http://localhost:3000/api/auth/callback/google`).
 - NEXTAUTH_SECRET: generate one just like `JWT_SECRET`. It’s used by NextAuth; it can be different from the backend secret.
 
 After creating these files, restart your dev servers so changes take effect.
-
 
 ## Database setup (migrations and seed)
 
@@ -138,6 +137,7 @@ Seed initial data so features relying on it work correctly:
   ```
 
   Then open the `QueryCount` model and create a row with:
+
   - `id`: 1
   - `total_queries`: 0
 
@@ -147,7 +147,6 @@ Seed initial data so features relying on it work correctly:
   psql "postgresql://USER:PASSWORD@localhost:5432/opensox" \
     -c "INSERT INTO \"QueryCount\" (id, total_queries) VALUES (1, 0) ON CONFLICT (id) DO NOTHING;"
   ```
-
 
 ## Setup environment
 
@@ -232,7 +231,7 @@ Your API server will be available at `http://localhost:4000`.
 For a complete setup with PostgreSQL, you can create a `docker-compose.yml` file:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   postgres:
     image: postgres:15

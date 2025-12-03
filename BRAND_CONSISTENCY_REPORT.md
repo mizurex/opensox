@@ -1,6 +1,7 @@
 # Brand Consistency Analysis Report for Opensox
 
 ## Executive Summary
+
 After analyzing your codebase, I've identified several brand consistency issues across colors, typography, and design tokens. You have **130+ instances of hardcoded hex colors** across 35 files, inconsistent purple variants, and mixed font usage patterns.
 
 ---
@@ -10,13 +11,16 @@ After analyzing your codebase, I've identified several brand consistency issues 
 ### Critical Problems
 
 #### 1. **Purple Brand Color Inconsistency**
+
 You have **MULTIPLE purple variants** scattered across the codebase:
 
 **In `tailwind.config.ts`:**
+
 - `ox-purple: #9455f4`
 - `ox-purple-2: #7A45C3`
 
 **Hardcoded in components:**
+
 - `#9159E2` (Brands.tsx - gradient start)
 - `#341e7b` (Brands.tsx - gradient end)
 - `#321D76` (Brands.tsx - pseudo element)
@@ -30,7 +34,9 @@ You have **MULTIPLE purple variants** scattered across the codebase:
 **Impact:** Your brand's primary color (purple) is inconsistent across the application, creating a disjointed visual identity.
 
 #### 2. **Background Color Inconsistency**
+
 Multiple black/dark backgrounds:
+
 - `background: #101010` (tailwind config)
 - `#0E0E10` (ox-black-1)
 - `#15161A` (ox-black-2)
@@ -44,6 +50,7 @@ Multiple black/dark backgrounds:
 **Impact:** Inconsistent surface colors make the UI feel unpolished and reduce hierarchy clarity.
 
 #### 3. **Border Color Inconsistency**
+
 - `border-primary: #252525` (tailwind config)
 - `border-[#252525]` (used 20+ times across components)
 - `#292929` (card-stack.tsx)
@@ -51,11 +58,14 @@ Multiple black/dark backgrounds:
 - `border: hsl(var(--border))` (defined but underutilized)
 
 #### 4. **Success/Active Color**
+
 - `ActiveTag.tsx` uses custom green: `bg-[#002d21]` and `text-[#00bd7c]`
 - Not defined in design system at all
 
 #### 5. **Hardcoded Colors Instead of Design Tokens**
+
 Found **130 instances** of hardcoded hex colors like:
+
 ```tsx
 // Bad - scattered throughout components
 className="bg-[#101010] border-[#252525]"
@@ -63,6 +73,7 @@ from-[#9159E2] to-[#341e7b]
 ```
 
 Instead of using:
+
 ```tsx
 // Good - using design tokens
 className="bg-background border-border-primary"
@@ -76,15 +87,24 @@ from-ox-purple to-ox-purple-2
 ### Font Configuration Problems
 
 #### 1. **Inconsistent Font Declarations**
+
 **In `layout.tsx`:**
+
 ```tsx
-const dmReg = localFont({ src: "./fonts/DMMono-Regular.ttf", variable: "--font-dm-mono-req" })
-const dmMed = localFont({ src: "./fonts/DMMono-Medium.ttf", variable: "--font-dm-mono-med" })
+const dmReg = localFont({
+  src: "./fonts/DMMono-Regular.ttf",
+  variable: "--font-dm-mono-req",
+});
+const dmMed = localFont({
+  src: "./fonts/DMMono-Medium.ttf",
+  variable: "--font-dm-mono-med",
+});
 // But also imports:
 import { GeistSans } from "geist/font/sans";
 ```
 
 **In `tailwind.config.ts`:**
+
 ```ts
 fontFamily: {
   DMfont: ["var(--font-dm-mono-med)", "var(--font-dm-mono-req)"],
@@ -93,6 +113,7 @@ fontFamily: {
 ```
 
 **In `globals.css`:**
+
 ```css
 body {
   @apply bg-background text-foreground font-MonaSans;
@@ -100,13 +121,16 @@ body {
 ```
 
 **Problems:**
+
 1. **Mona Sans is referenced** but NEVER loaded in `layout.tsx`
 2. GeistSans is used in body but MonaSans is applied globally via CSS
 3. Font variables for Mona Sans are defined but fonts aren't loaded
 4. `font-mono` is used extensively (30+ times) but no clarity on which mono font
 
 #### 2. **Font Usage Patterns**
+
 Components use different font approaches:
+
 - `font-mono` (30+ instances) - unclear if this refers to DMfont or system default
 - `font-sans` (5+ instances) - unclear which sans-serif
 - `font-DMfont` - rarely used directly
@@ -119,6 +143,7 @@ Components use different font approaches:
 ### Brand Consistency Score: **3.5/10** 🔴
 
 **Breakdown:**
+
 - **Color Consistency:** 2/10 - Multiple purple variants, 130+ hardcoded colors
 - **Typography Consistency:** 4/10 - Font loading issues, unclear hierarchy
 - **Design Token Usage:** 3/10 - Tokens defined but underutilized
@@ -131,6 +156,7 @@ Components use different font approaches:
 ### Priority 1: Consolidate Color System
 
 #### Step 1: Create a Unified Design Token File
+
 Create `/apps/web/src/lib/design-tokens.ts`:
 
 ```typescript
@@ -138,52 +164,54 @@ export const colors = {
   // Brand Colors
   brand: {
     purple: {
-      DEFAULT: '#9455f4',     // Primary brand purple
-      light: '#a675f5',        // Lighter variant
-      dark: '#7A45C3',         // Darker variant
+      DEFAULT: "#9455f4", // Primary brand purple
+      light: "#a675f5", // Lighter variant
+      dark: "#7A45C3", // Darker variant
       gradient: {
-        from: '#9455f4',
-        to: '#7A45C3',
-      }
-    }
+        from: "#9455f4",
+        to: "#7A45C3",
+      },
+    },
   },
-  
+
   // Backgrounds
   background: {
-    primary: '#101010',        // Main background
-    secondary: '#141414',      // Sidebar, cards
-    tertiary: '#1A1A1A',       // Content areas
-    elevated: '#1E1E1E',       // Elevated cards
+    primary: "#101010", // Main background
+    secondary: "#141414", // Sidebar, cards
+    tertiary: "#1A1A1A", // Content areas
+    elevated: "#1E1E1E", // Elevated cards
   },
-  
+
   // Borders
   border: {
-    DEFAULT: '#252525',        // Primary border
-    light: '#363636',          // Lighter borders
-    focus: '#9455f4',          // Focus states
+    DEFAULT: "#252525", // Primary border
+    light: "#363636", // Lighter borders
+    focus: "#9455f4", // Focus states
   },
-  
+
   // Status Colors
   status: {
     success: {
-      bg: '#002d21',
-      text: '#00bd7c',
-      border: '#00bd7c',
+      bg: "#002d21",
+      text: "#00bd7c",
+      border: "#00bd7c",
     },
     // Add error, warning, info as needed
-  }
+  },
 } as const;
 
 export const gradients = {
-  purple: 'linear-gradient(to bottom, #9455f4, #7A45C3)',
-  purpleText: 'linear-gradient(to bottom, #9455f4, #341e7b)',
-  background: 'radial-gradient(circle at center, #101010 30%, transparent 100%)',
+  purple: "linear-gradient(to bottom, #9455f4, #7A45C3)",
+  purpleText: "linear-gradient(to bottom, #9455f4, #341e7b)",
+  background:
+    "radial-gradient(circle at center, #101010 30%, transparent 100%)",
 } as const;
 ```
 
 #### Step 2: Update `tailwind.config.ts`
+
 ```typescript
-import { colors } from './src/lib/design-tokens';
+import { colors } from "./src/lib/design-tokens";
 
 const config: Config = {
   theme: {
@@ -191,16 +219,16 @@ const config: Config = {
       colors: {
         background: colors.background.primary,
         foreground: "#ffffff",
-        
+
         // Brand colors
         brand: {
           purple: {
             DEFAULT: colors.brand.purple.DEFAULT,
             light: colors.brand.purple.light,
             dark: colors.brand.purple.dark,
-          }
+          },
         },
-        
+
         // Surface colors
         surface: {
           primary: colors.background.primary,
@@ -208,17 +236,17 @@ const config: Config = {
           tertiary: colors.background.tertiary,
           elevated: colors.background.elevated,
         },
-        
+
         // Border colors
         border: {
           DEFAULT: colors.border.DEFAULT,
           light: colors.border.light,
           focus: colors.border.focus,
         },
-        
+
         // Status colors
         success: colors.status.success,
-        
+
         // Keep shadcn/ui tokens
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -226,20 +254,22 @@ const config: Config = {
         },
         // ... rest of shadcn tokens
       },
-    }
-  }
+    },
+  },
 };
 ```
 
 #### Step 3: Replace Hardcoded Colors
 
 **Before:**
+
 ```tsx
 <div className="bg-[#101010] border-[#252525]">
   <span className="from-[#9159E2] to-[#341e7b]">
 ```
 
 **After:**
+
 ```tsx
 <div className="bg-surface-primary border-border">
   <span className="from-brand-purple to-brand-purple-dark">
@@ -304,8 +334,10 @@ fontFamily: {
   body {
     @apply bg-background text-foreground font-sans;
   }
-  
-  code, pre, kbd {
+
+  code,
+  pre,
+  kbd {
     @apply font-mono;
   }
 }
@@ -316,18 +348,21 @@ fontFamily: {
 #### Create a migration checklist:
 
 **Phase 1: Core Components (Week 1)**
+
 - [ ] `custom-button.tsx` - Use `brand-purple` tokens
 - [ ] `header.tsx` - Use `surface-*` and `border` tokens
 - [ ] `navbar.tsx` - Consolidate GitHub button colors
 - [ ] `ActiveTag.tsx` - Use `success` tokens
 
 **Phase 2: Landing Page (Week 2)**
+
 - [ ] `Hero.tsx` - Replace hardcoded colors
 - [ ] `Brands.tsx` - Use brand gradient tokens
 - [ ] `Bento.tsx` - Use surface tokens
 - [ ] `CTA.tsx` - Use brand tokens
 
 **Phase 3: Dashboard (Week 3)**
+
 - [ ] `ProjectsContainer.tsx` - Keep language colors (they're semantic)
 - [ ] `Sidebar.tsx` - Use surface tokens
 - [ ] All card components - Use surface tokens
@@ -336,22 +371,25 @@ fontFamily: {
 
 Create `/apps/web/docs/DESIGN_SYSTEM.md`:
 
-```markdown
+````markdown
 # Opensox Design System
 
 ## Colors
 
 ### Brand Colors
+
 - Primary: `brand-purple` (#9455f4) - CTAs, links, highlights
 - Gradient: `from-brand-purple to-brand-purple-dark`
 
 ### Surfaces
+
 - `surface-primary` (#101010) - Main background
 - `surface-secondary` (#141414) - Sidebars, navigation
 - `surface-tertiary` (#1A1A1A) - Content containers
 - `surface-elevated` (#1E1E1E) - Cards, modals
 
 ### Borders
+
 - `border` (#252525) - Default borders
 - `border-light` (#363636) - Lighter borders for nested elements
 - `border-focus` (brand-purple) - Focus states
@@ -359,10 +397,12 @@ Create `/apps/web/docs/DESIGN_SYSTEM.md`:
 ## Typography
 
 ### Font Families
+
 - **Sans-serif (Primary):** Geist Sans - Body text, headings
 - **Monospace:** DM Mono - Code, terminal output, tech content
 
 ### Usage
+
 ```tsx
 // Body text
 <p className="font-sans">Regular text</p>
@@ -370,19 +410,23 @@ Create `/apps/web/docs/DESIGN_SYSTEM.md`:
 // Code/Terminal
 <code className="font-mono">Terminal output</code>
 ```
+````
 
 ## Usage Guidelines
 
 ### DO ✅
+
 - Use design tokens: `bg-surface-primary border-border`
 - Use brand purple for CTAs and highlights
 - Use semantic color names
 
 ### DON'T ❌
+
 - Hardcode hex colors: `bg-[#101010]`
 - Use random purple variants
 - Mix different surface colors arbitrarily
-```
+
+````
 
 ---
 
@@ -432,11 +476,14 @@ const languageColors: Record<string, string> = {
   typescript: "bg-blue-500/15 text-blue-500",
   // ...
 };
-```
+````
+
 These are semantic colors representing programming languages (industry standard).
 
 ### Gradients
+
 Consider creating reusable gradient classes:
+
 ```css
 .gradient-purple {
   @apply bg-gradient-to-b from-brand-purple to-brand-purple-dark;
@@ -452,27 +499,23 @@ Consider creating reusable gradient classes:
 ## 🎯 PRIORITY SUMMARY
 
 **🔴 CRITICAL:**
+
 1. Consolidate purple brand colors (you have 8+ variants!)
 2. Fix font loading (Mona Sans is referenced but not loaded)
 
-**🟡 HIGH:**
-3. Create `design-tokens.ts` file
-4. Update `tailwind.config.ts` with new tokens
-5. Document design system
+**🟡 HIGH:** 3. Create `design-tokens.ts` file 4. Update `tailwind.config.ts` with new tokens 5. Document design system
 
-**🟢 MEDIUM:**
-6. Migrate components phase by phase
-7. Add ESLint rules for hardcoded colors
+**🟢 MEDIUM:** 6. Migrate components phase by phase 7. Add ESLint rules for hardcoded colors
 
 ---
 
 ## Questions?
 
 If you need help implementing any of these recommendations, let me know and I can:
+
 - Create the design tokens file
 - Update specific components
 - Set up ESLint rules
 - Create migration scripts
 
 Would you like me to start implementing these fixes?
-

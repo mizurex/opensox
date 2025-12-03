@@ -19,7 +19,7 @@ export function LegalCard({
         variant === "default"
           ? "bg-surface-tertiary border"
           : "bg-surface-tertiary border border-brand-purple",
-        className
+        className,
       )}
     >
       {children}

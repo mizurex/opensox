@@ -14,7 +14,8 @@ export const europeanSummerOfCode: Program = {
   status: "active",
   isPaid: true,
   duration: "About 3 months per project",
-  stipendSummary: "Stipend provided by host organization; amount varies by project",
+  stipendSummary:
+    "Stipend provided by host organization; amount varies by project",
   timelineSummary:
     "Projects released in batches around Mar to Apr; each project then runs for roughly three months",
   sections: [

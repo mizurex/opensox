@@ -23,7 +23,7 @@ export const projectService = {
    */
   async fetchGithubProjects(
     filters: Partial<FilterProps> = {},
-    options: Partial<OptionsTypesProps> = {}
+    options: Partial<OptionsTypesProps> = {},
   ): Promise<RepositoryProps[]> {
     const queryParts: string[] = [];
 
@@ -86,7 +86,7 @@ export const projectService = {
       {
         searchQuery: searchQueryString,
         first: options.per_page || 100,
-      }
+      },
     );
 
     return response.search.nodes;

@@ -34,7 +34,7 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
           className="flex"
           style={{
             ["--duration" as string]: getTweetsAnimationDuration(
-              topRowTweets.length
+              topRowTweets.length,
             ),
             width: "fit-content",
           }}
@@ -70,7 +70,7 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
           className="flex"
           style={{
             ["--duration" as string]: getTweetsAnimationDuration(
-              bottomRowTweets.length
+              bottomRowTweets.length,
             ),
             width: "fit-content",
           }}

@@ -59,7 +59,7 @@ const prisma = basePrisma.$extends({
         if (result?.accounts) {
           result.accounts = Array.isArray(result.accounts)
             ? result.accounts.map((account: any) =>
-                decryptAccountTokens(account)
+                decryptAccountTokens(account),
               )
             : decryptAccountTokens(result.accounts);
         }
@@ -70,7 +70,7 @@ const prisma = basePrisma.$extends({
         if (result?.accounts) {
           result.accounts = Array.isArray(result.accounts)
             ? result.accounts.map((account: any) =>
-                decryptAccountTokens(account)
+                decryptAccountTokens(account),
               )
             : decryptAccountTokens(result.accounts);
         }
@@ -81,7 +81,7 @@ const prisma = basePrisma.$extends({
         return result?.map((user: any) => {
           if (user?.accounts) {
             user.accounts = user.accounts.map((account: any) =>
-              decryptAccountTokens(account)
+              decryptAccountTokens(account),
             );
           }
           return user;
@@ -93,12 +93,12 @@ const prisma = basePrisma.$extends({
 
 const withTimeout = async <T>(
   operation: Promise<T>,
-  timeoutMs: number = 5000
+  timeoutMs: number = 5000,
 ): Promise<T> => {
   const timeoutPromise = new Promise<never>((_, reject) => {
     setTimeout(
       () => reject(new Error("Database operation timed out")),
-      timeoutMs
+      timeoutMs,
     );
   });
 

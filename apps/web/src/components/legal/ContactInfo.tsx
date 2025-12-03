@@ -17,9 +17,7 @@ export function ContactInfo({
   return (
     <>
       {showTitle && (
-        <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
-          {titleText}
-        </h2>
+        <h2 className="text-2xl lg:text-3xl font-semibold mb-4">{titleText}</h2>
       )}
       {description && <p className="mb-4">{description}</p>}
       <div className="space-y-2">
@@ -56,4 +54,3 @@ export function ContactInfo({
     </>
   );
 }
-

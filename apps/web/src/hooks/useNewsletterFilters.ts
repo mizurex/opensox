@@ -5,7 +5,7 @@ import { TimeFilter } from "@/components/newsletters/NewsletterFilters";
 export function useNewsletterFilters(
   newsletters: Newsletter[],
   searchQuery: string,
-  timeFilter: TimeFilter
+  timeFilter: TimeFilter,
 ) {
   return useMemo(() => {
     let filtered = [...newsletters];
@@ -17,7 +17,7 @@ export function useNewsletterFilters(
         (newsletter) =>
           newsletter.title.toLowerCase().includes(query) ||
           newsletter.description?.toLowerCase().includes(query) ||
-          newsletter.excerpt?.toLowerCase().includes(query)
+          newsletter.excerpt?.toLowerCase().includes(query),
       );
     }
 
@@ -25,7 +25,9 @@ export function useNewsletterFilters(
     if (timeFilter !== "all") {
       filtered = filtered.filter((newsletter) => {
         const date = new Date(newsletter.date);
-        const month = date.toLocaleString("en-US", { month: "long" }).toLowerCase();
+        const month = date
+          .toLocaleString("en-US", { month: "long" })
+          .toLowerCase();
         return month === timeFilter;
       });
     }

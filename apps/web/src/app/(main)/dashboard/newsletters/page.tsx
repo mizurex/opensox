@@ -9,7 +9,11 @@ import { useSubscription } from "@/hooks/useSubscription";
 import { Newsletter } from "@/components/newsletters/NewsletterCard";
 import { NewsletterSkeleton } from "@/components/newsletters/NewsletterSkeleton";
 import { PremiumUpgradePrompt } from "@/components/newsletters/PremiumUpgradePrompt";
-import { NewsletterFilters, TimeFilter, SortFilter } from "@/components/newsletters/NewsletterFilters";
+import {
+  NewsletterFilters,
+  TimeFilter,
+  SortFilter,
+} from "@/components/newsletters/NewsletterFilters";
 import { NewsletterPagination } from "@/components/newsletters/NewsletterPagination";
 import { NewsletterList } from "@/components/newsletters/NewsletterList";
 import { useNewsletterFilters } from "@/hooks/useNewsletterFilters";
@@ -18,27 +22,27 @@ export default function NewslettersPage() {
   const router = useRouter();
   const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<'unauthorized' | 'forbidden' | null>(null);
+  const [error, setError] = useState<"unauthorized" | "forbidden" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("all");
   const [sortFilter, setSortFilter] = useState<SortFilter>("newest");
   const [currentPage, setCurrentPage] = useState(1);
   const { isPaidUser, isLoading: subscriptionLoading } = useSubscription();
-  
+
   const itemsPerPage = 5;
 
   useEffect(() => {
     if (subscriptionLoading) return;
-    
+
     fetch("/api/newsletters")
       .then(async (res) => {
         if (res.status === 401) {
-          setError('unauthorized');
+          setError("unauthorized");
           setLoading(false);
           return null;
         }
         if (res.status === 403) {
-          setError('forbidden');
+          setError("forbidden");
           setLoading(false);
           return null;
         }
@@ -57,7 +61,11 @@ export default function NewslettersPage() {
       .catch(() => setLoading(false));
   }, [subscriptionLoading]);
 
-  const filteredNewsletters = useNewsletterFilters(newsletters, searchQuery, timeFilter);
+  const filteredNewsletters = useNewsletterFilters(
+    newsletters,
+    searchQuery,
+    timeFilter,
+  );
 
   // Apply sorting
   const sortedNewsletters = useMemo(() => {
@@ -93,12 +101,12 @@ export default function NewslettersPage() {
     );
   }
 
-  if (error === 'unauthorized') {
-    router.push('/login');
+  if (error === "unauthorized") {
+    router.push("/login");
     return null;
   }
 
-  if (!isPaidUser || error === 'forbidden') {
+  if (!isPaidUser || error === "forbidden") {
     return <PremiumUpgradePrompt />;
   }
 

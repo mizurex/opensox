@@ -25,14 +25,14 @@ export const userRouter = router({
     .input(
       z.object({
         completedSteps: z.array(z.string()),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }: any) => {
       const userId = ctx.user.id;
       return await userService.updateCompletedSteps(
         ctx.db.prisma,
         userId,
-        input.completedSteps
+        input.completedSteps,
       );
-  }),
+    }),
 });

@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   const isProtectedRoute = PROTECTED_DASHBOARD_ROUTES.some((path) =>
-    pathname.startsWith(path)
+    pathname.startsWith(path),
   );
 
   if (isProtectedRoute && !token) {

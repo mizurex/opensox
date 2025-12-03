@@ -33,7 +33,7 @@ app.use(
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:"],
     },
-  })
+  }),
 );
 
 // Apply IP blocking middleware first
@@ -57,7 +57,7 @@ const apiLimiter = rateLimit({
   handler: (req, res) => {
     console.log(`[RATE LIMIT] IP ${req.ip} hit API rate limit`);
     res.status(429).json({ error: "Too many requests from this IP" });
-  }
+  },
 });
 
 // Request size limits (except for webhook - needs raw body)
@@ -177,7 +177,7 @@ app.post("/webhook/razorpay", async (req: Request, res: Response) => {
 
     const isValidSignature = crypto.timingSafeEqual(
       Buffer.from(signature),
-      Buffer.from(expectedSignature)
+      Buffer.from(expectedSignature),
     );
 
     if (!isValidSignature) {
@@ -228,11 +228,11 @@ app.post("/webhook/razorpay", async (req: Request, res: Response) => {
         await paymentService.createSubscription(
           userId,
           planId,
-          paymentRecord.id
+          paymentRecord.id,
         );
 
         console.log(
-          `✅ Webhook: Payment ${razorpayPaymentId} processed successfully`
+          `✅ Webhook: Payment ${razorpayPaymentId} processed successfully`,
         );
         return res.status(200).json({ status: "ok" });
       } catch (error: any) {
@@ -264,7 +264,7 @@ app.use(
   trpcExpress.createExpressMiddleware({
     router: appRouter,
     createContext,
-  })
+  }),
 );
 
 // Global error handling

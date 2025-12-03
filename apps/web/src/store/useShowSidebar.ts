@@ -11,6 +11,5 @@ export const useShowSidebar = create<showSidebarProps>((set) => ({
   showSidebar: false,
   setShowSidebar: (value) => set({ showSidebar: value }),
   isCollapsed: false,
-  toggleCollapsed: () =>
-    set((state) => ({ isCollapsed: !state.isCollapsed })),
+  toggleCollapsed: () => set((state) => ({ isCollapsed: !state.isCollapsed })),
 }));

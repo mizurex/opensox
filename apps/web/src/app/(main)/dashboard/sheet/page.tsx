@@ -201,7 +201,7 @@ export default function SheetPage() {
     onError: (
       error: unknown,
       _newData: { completedSteps: string[] },
-      context: { previousSteps: string[] } | undefined
+      context: { previousSteps: string[] } | undefined,
     ) => {
       console.error("Failed to update completed steps:", error);
       if (context?.previousSteps) {
@@ -232,7 +232,7 @@ export default function SheetPage() {
       setCompletedSteps(newCompletedSteps);
       updateStepsMutation.mutate({ completedSteps: newCompletedSteps });
     },
-    [completedSteps, updateStepsMutation]
+    [completedSteps, updateStepsMutation],
   );
 
   // Memoize computed values
@@ -305,7 +305,7 @@ export default function SheetPage() {
                     ${completedSteps.includes(module.id) ? "✓ Completed" : "Pending"}
                   </td>
                 </tr>
-              `
+              `,
                 )
                 .join("")}
             </tbody>

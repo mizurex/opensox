@@ -15,7 +15,7 @@ on:
 
   push:
     branches:
-      - workflow
+      - ci/workflow
     paths:
       - ".github/workflows/**" #test
 

@@ -17,7 +17,7 @@ on:
     branches:
       - ci/workflow
     paths:
-      - ".github/workflows/**" #test
+      - ".github/workflows/**" #test workflow
 
 concurrency:
   group: pr-ci-${{ github.ref }}
